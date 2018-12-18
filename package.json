@@ -4,14 +4,14 @@
   "description": "Create Tests for a RESTful API.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha 'src/test/**/*.tests.js'"
+    "test": "mocha --timeout 15000 'src/test/**/*.tests.js'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ViniciusGularte/AwesomeRestfulTests.git"
   },
   "keywords": [
-    "tests",
+    "tests"
   ],
   "author": "Vinicius gularte",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "url": "https://github.com/ViniciusGularte/AwesomeRestfulTests/issues"
   },
   "devDependencies": {
+    "chai-http": "^4.2.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
   },
