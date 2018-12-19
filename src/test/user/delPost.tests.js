@@ -9,9 +9,13 @@ describe('Tests delete posts', () => {
         it('Test DELETE Especific Post', (done) => {
             let id = 1;
             chai.request('https://jsonplaceholder.typicode.com') // Server Adress
-                .del('/posts/',id) // endpoint with we will test
+                .del('/posts/'+id) // endpoint with we will test
                 .end((err, res) => { // tests to make
-                    res.should.have.status(202); // verificando se o retorno e um status code 200
+                  response.should.have.status(200);
+                  response.should.be.json;
+                  response.body.should.be.a('object');
+                  response.body.should.have.property('REMOVED');
+                  response.body.REMOVED.should.be.a('object');
                   done();
                 });
         });

@@ -9,9 +9,13 @@ describe('Tests get posts', () => {
         it('Test GET Especific Post', (done) => {
             let id = 1;
             chai.request('https://jsonplaceholder.typicode.com') // Server Adress
-                .get('/posts/',id) // endpoint with we will test
+                .get('/posts/'+id) // endpoint with we will test
                 .end((err, res) => { // tests to make
-                    res.should.have.status(200); // verificando se o retorno e um status code 200
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('title');
+                    res.body.should.have.property('body');
                   done();
                 });
         });
@@ -19,7 +23,11 @@ describe('Tests get posts', () => {
             chai.request('https://jsonplaceholder.typicode.com') // Server Adress
                 .get('/posts') // endpoint with we will test
                 .end((err, res) => { // tests to make
-                    res.should.have.status(200); // verificando se o retorno e um status code 200
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('array');
+                    res.body[0].should.have.property('title');
+                    res.body[0].should.have.property('body');
                   done();
                 });
         });
